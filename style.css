@@ -1,0 +1,671 @@
+/* 1. Base Styles & Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+body{
+    background:linear-gradient(180deg,#eef6eb 0%,#f8faf7 50%,#ffffff 100%);
+    color:#222;
+    min-height:100vh;
+    padding-bottom:90px;
+    overflow-x:hidden;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    top:-200px;
+    left:-100px;
+    width:450px;
+    height:450px;
+    background:radial-gradient(circle,rgba(142,181,138,.28),transparent 70%);
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    bottom:-150px;
+    right:-150px;
+    width:350px;
+    height:350px;
+    background:radial-gradient(circle,rgba(170,220,170,.20),transparent 70%);
+    pointer-events:none;
+}
+
+.screen{
+    display:none;
+    padding:20px;
+    min-height:100vh;
+}
+
+.screen.active{
+    display:block;
+}
+
+/* 2. Welcome Screen */
+.welcome-card{
+    max-width:420px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:45px;
+    background:rgba(255,255,255,.45);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+    text-align:center;
+    overflow:hidden;
+}
+
+.welcome-image{
+    width:200px;
+    height:200px;
+    margin:0 auto 20px;
+    overflow:hidden;
+    border-radius:16px;
+    background:#f3f3f3;
+}
+
+.welcome-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.welcome-card h1{
+    font-size:42px;
+    color:#355335;
+    margin-bottom:15px;
+    font-weight:800;
+}
+
+.welcome-card p{
+    line-height:2.2;
+    font-size:17px;
+    color:#546554;
+    margin-bottom:30px;
+}
+
+#startBtn{
+    width:100%;
+    height:65px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(135deg,#8ab57d,#5e8754);
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(94,135,84,.35);
+    transition:.3s;
+}
+
+#startBtn:hover{
+    transform:translateY(-2px);
+}
+/* 3. Header */
+header{
+    margin-bottom:20px;
+}
+
+header h2{
+    font-size:28px;
+    color:#3d5d38;
+}
+
+/* 4. Hero Card */
+.hero-card{
+    position:relative;
+    overflow:hidden;
+    padding:30px;
+    border-radius:35px;
+    background:linear-gradient(135deg,rgba(223,239,218,.95),rgba(255,255,255,.7));
+    backdrop-filter:blur(20px);
+    min-height:180px;
+}
+
+
+
+.hero-card h3{
+    font-size:28px;
+    margin-bottom:15px;
+    color:#345034;
+}
+
+.hero-card p{
+    font-size:15px;
+    line-height:2;
+}
+
+/* 5. Stages Grid */
+.stages-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.stage-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:90px;
+    padding:18px 22px;
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:30px;
+    transition:.3s;
+}
+
+.stage-card:hover{
+    transform:translateY(-4px) scale(1.01);
+    box-shadow:0 15px 35px rgba(108,143,87,.18);
+}
+
+.stage-left{
+    display:flex;
+    align-items:center;
+}
+
+.stage-icon{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#d9ecd0,#b8d6a9);
+    font-size:22px;
+}
+
+.stage-center{
+    flex:1;
+    padding-right:18px;
+    text-align:right;
+}
+
+.stage-title{
+    font-size:18px;
+    font-weight:700;
+    color:#385438;
+}
+
+.stage-right{
+    display:flex;
+    align-items:center;
+}
+
+.stage-badge{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    color:#56784f;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+/* 6. Stage Page & Topbar */
+.topbar{
+    background:rgba(255,255,255,.5);
+    backdrop-filter:blur(15px);
+    padding:12px 18px;
+    border-radius:24px;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.topbar button{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:white;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+#stageTitle{
+    font-size:24px;
+    font-weight:800;
+    color:#385438;
+}
+
+.content-card{
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(16px);
+    padding:28px;
+    border-radius:32px;
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+    margin-bottom:18px;
+}
+
+.stage-image{
+    width:100%;
+    height:180px;
+    border-radius:28px;
+    margin-bottom:20px;
+    background:linear-gradient(135deg,rgba(220,235,215,.8),rgba(255,255,255,.6));
+    border:1px solid rgba(255,255,255,.7);
+}
+
+.stage-text-box{
+    background:linear-gradient(135deg,rgba(214,234,205,.95),rgba(235,245,230,.9));
+    padding:24px;
+    border-radius:28px;
+    line-height:2.4;
+    font-size:16px;
+    color:#3d523d;
+    min-height:180px;
+    white-space:pre-wrap;
+}
+
+/* 7. Question / Note Taking */
+.question-card{
+    background:rgba(255,255,255,.7);
+    backdrop-filter:blur(18px);
+    padding:24px;
+    border-radius:32px;
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+}
+
+.note-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.note-avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#d8ecd2,#b5d4a9);
+    border:2px solid rgba(255,255,255,.8);
+    flex-shrink:0;
+}
+
+textarea{
+    width:100%;
+    min-height:220px;
+    padding:20px;
+    resize:none;
+    border:none;
+    outline:none;
+    background:rgba(248,250,246,.9);
+    border-radius:24px;
+    font-size:16px;
+    line-height:2.2;
+    color:#333;
+    box-shadow:inset 0 0 0 1px rgba(150,170,150,.15);
+}
+
+textarea:focus{
+    box-shadow:inset 0 0 0 2px #90b086;
+}
+
+#saveNote{
+    width:100%;
+    height:62px;
+    margin-top:18px;
+    border:none;
+    border-radius:22px;
+    background:linear-gradient(135deg,#90b086,#66895c);
+    color:white;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 12px 25px rgba(102,137,92,.25);
+    transition:.25s;
+}
+
+#saveNote:hover{
+    transform:translateY(-2px);
+}
+
+/* 8. Garden List */
+#gardenList{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.memory-card{
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(16px);
+    padding:22px;
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    line-height:2.2;
+    margin-bottom:14px;
+    position:relative;
+    overflow:hidden;
+}
+
+.memory-card::before{
+    content:"";
+    position:absolute;
+    right:0;
+    top:0;
+    width:6px;
+    height:100%;
+    background:linear-gradient(180deg,#a4c795,#6c8f57);
+}
+
+.memory-card h4{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(108,143,87,.12);
+    color:#55734d;
+    font-size:13px;
+    margin-bottom:14px;
+}
+
+.garden-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.garden-icon{
+    width:70px;
+    height:70px;
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:linear-gradient(135deg,#d8ecd2,#b5d4a9);
+}
+
+/* 9. Bottom Navigation */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    right:0;
+    left:0;
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -4px 20px rgba(0,0,0,.08);
+}
+
+.bottom-nav button{
+    background:none;
+    border:none;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+/* 10. Interactive Garden Area */
+#gardenArea {
+    width: 340px;
+    height: 420px;
+    margin: auto;
+    position: relative;
+}
+
+/* 11. Rabbit Styling & Fixes */
+#rabbit {
+    width: 180px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 10;
+    transition: filter 0.3s, transform 0.3s;
+}
+
+/* Base Breathe Animation (Only when NOT jumping) */
+#rabbit:not(.jump) {
+    animation: breathe 3s infinite ease-in-out;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.03); }
+}
+
+/* Unified Jump Animation (Fixed redundancy) */
+.jump {
+    animation: jumpEffect 0.5s ease;
+}
+
+@keyframes jumpEffect {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-35px); }
+}
+
+/* Interaction Effects */
+.blush {
+    filter: drop-shadow(0 0 10px rgba(255,100,150,0.5));
+}
+
+/* 12. Garden Items (Props) */
+.garden-item {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.garden-item.visible {
+    opacity: 1;
+}
+
+#tiny { width: 45px; left: 135px; bottom: -5px; }
+#lillium { width: 60px; left: 45px; bottom: 85px; }
+#mushroom { width: 70px; right: 40px; bottom: 55px; }
+#butterfly { width: 50px; top: -20px; left: 130px; }
+#pinkflower { width: 60px; right: 25px; top: 130px; }
+#stone { width: 55px; left: 170px; bottom: 25px; }
+#bush { width: 85px; right: 10px; bottom: 5px; }
+#tree { width: 150px; left: -20px; top: 40px; }
+
+/* Floating animation for butterfly/items */
+.float {
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* 13. Speech & UI Elements */
+#speechBox {
+    max-width: 220px;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    font-size: 15px;
+    text-align: center;
+    min-height: 50px;
+}
+
+/* Carrot Counter Fixes */
+#carrotCounter {
+    position: fixed;
+    /* فاصله از بالا را بیشتر کردیم تا از روی متن بیاید پایین */
+    top: 80px; 
+    right: 20px;
+    background: white;
+    /* پدینگ بیشتر برای بزرگتر شدن کپسول */
+    padding: 12px 20px; 
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* فاصله بین عدد و هویج */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    z-index: 2000; /* بالاتر از همه عناصر */
+    direction: ltr;
+    border: 2px solid #fffae6; /* یک حاشیه خیلی کمرنگ برای زیبایی */
+}
+
+#carrotCount {
+    font-weight: 900; /* ضخیم‌تر شدن عدد */
+    color: #e67e22;
+    font-size: 1.5rem; /* بزرگتر شدن سایز عدد */
+    line-height: 1;
+}
+
+#dragCarrot {
+    width: 35px; /* بزرگتر شدن خودِ آیکون هویج */
+    height: auto;
+    cursor: grab;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
+}
+
+#dragCarrot:active {
+    cursor: grabbing;
+    transform: scale(1.2);
+}
+
+
+/* 14. Responsive Grid Fix */
+@media(max-width: 683px) {
+    .stages-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
+
+/* ===== Breath Modal ===== */
+#breathModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#breathModal > div {
+    background: white;
+    border-radius: 35px;
+    padding: 40px 30px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+#breathCircle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d8ecd2, #8ab57d);
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 4s ease;
+}
+
+#breathCircle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: opacity 0.5s ease;
+}
+
+#breathText {
+    font-size: 20px;
+    color: #3d523d;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: Vazirmatn, sans-serif;
+}
+
+#breathSub {
+    font-size: 14px;
+    color: #7a9a72;
+    margin-bottom: 25px;
+    font-family: Vazirmatn, sans-serif;
+}
+
+#breathModal button {
+    border: none;
+    background: rgba(142,181,138,0.2);
+    color: #56784f;
+    padding: 12px 30px;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: Vazirmatn, sans-serif;
+}
+#breathBtn {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #d8ecd2, #8ab57d);
+    color: #3d523d;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Vazirmatn, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(138,181,125,0.3);
+    transition: 0.25s;
+    letter-spacing: 0.3px;
+}
+
+#breathBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(138,181,125,0.4);
+}
+
+/* ===== Mood Btns ===== */
+#moodBtns button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+#moodBtns button:hover {
+    transform: scale(1.15);
+}
+
+.mood-saved {
+    margin-top: 12px;
+    font-size: 15px;
+    color: #56784f;
+    font-weight: 600;
+    line-height: 2;
+}

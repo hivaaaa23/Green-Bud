@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>جوونه سبز</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- صفحه شروع -->
+    <section id="welcomeScreen" class="screen active">
+        <div class="welcome-card">
+            <div class="welcome-image">
+                <img src="welcom.png" alt="تصویر جوانه سبز" class="welcome-img">
+            </div>
+
+            <h1>جوونه سبز</h1>
+
+            <p>اینجا رو اپ خودت بدون😔</p>
+
+            <button id="startBtn">شروع </button>
+        </div>
+    </section>
+
+
+    <!-- صفحه خانه -->
+    <section id="homeScreen" class="screen">
+
+        <header>
+            <h2>خونه</h2>
+        </header>
+
+        <div class="hero-card">
+            <div class="hero-image"></div>
+
+            <h3>به جوونه سبز خوش اومدییی</h3>
+
+            <p>
+                ✨🎀از بین مراحل زیر یکی رو انتخاب کن.
+            </p>
+        </div>
+
+        <div id="stagesContainer" class="stages-grid"></div>
+
+    </section>
+
+
+    <!-- صفحه مرحله -->
+    <section id="stageScreen" class="screen">
+
+        <header class="topbar">
+            <button id="backHome">⬅️</button>
+
+            <h2 id="stageTitle">عنوان مرحله</h2>
+        </header>
+
+        <div class="content-card">
+
+            <div id="stageText" class="stage-text-box">
+                متن مرحله
+            </div>
+        </div>
+
+        <div class="question-card">
+
+            <div class="note-header">
+                <div class="note-avatar"></div>
+
+                <div>
+                    <h3 id="stageQuestion">سوال</h3>
+                </div>
+            </div>
+
+            <textarea id="noteInput" placeholder="اینجا بنویس..."></textarea>
+
+            <button id="saveNote">
+                ذخیره یادداشت
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- باغچه خاطرات -->
+    <section id="gardenScreen" class="screen">
+
+        <header class="topbar">
+            <button id="backHome2">⬅️</button>
+
+            <div class="garden-header">
+                <div class="garden-icon">🌱</div>
+
+                <div>
+                    <h2>باغچه خاطرات</h2>
+
+                    <p>
+                        🌟جملات ارزشمندت اینجا نگهداری میشن
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <div id="gardenList"></div>
+
+    </section>
+
+
+    <!-- صفحه همراه من -->
+    <section id="friendScreen" class="screen">
+<div>
+<h2>خرگوشک🎀</h2>
+
+<div id="speechBox">
+سلام لیلی خانوم 🌱
+</div>
+<div id="carrotCounter">
+    <span id="carrotCount">0</span>
+    <img src="carrot.png" id="dragCarrot" alt="carrot" draggable="true">
+</div>
+
+<img src="Carrot.png"
+id="dragCarrot"
+draggable="true">
+<audio id="eatSound" src="eat.mp3"></audio>
+<button id="giftBtn" onclick="openGift()" disabled>🎁</button>
+<div id="giftMessage" style="display:none;"></div>
+<div id="gardenArea">
+
+<img src="Rabbit.png" id="rabbit">
+<img src="Tiny.png" id="tiny" class="garden-item">
+<img src="Lillium.png" id="lillium" class="garden-item">
+<img src="Mushroom.png" id="mushroom" class="garden-item">
+<img src="Butterfly.png" id="butterfly" class="garden-item">
+<img src="PinkFlower.png" id="pinkflower" class="garden-item">
+<img src="Stone.png" id="stone" class="garden-item">
+<img src="Bush.png" id="bush" class="garden-item">
+<img src="Tree.png" id="tree" class="garden-item">
+
+</div>
+
+</div>
+
+</section>
+
+
+    <!-- منو پایین -->
+    <nav class="bottom-nav">
+        <button id="navHome">خونه🐥</button>
+        <button id="navStages">مرحله ها☁️</button>
+        <button id="navFriend">خرگوشک🥕</button>
+        <button id="navGarden">باغچه🍒</button>
+		<button id="navMood" onclick="loadMoodScreen()">درصد پیشرفت📊</button>
+    </nav>
+
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+<!-- Breath Modal -->
+<div id="breathModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); backdrop-filter:blur(8px); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; border-radius:35px; padding:40px 30px; text-align:center; max-width:320px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+        <div id="breathCircle" style="width:130px; height:130px; border-radius:50%; background:linear-gradient(135deg,#d8ecd2,#8ab57d); margin:0 auto 25px; display:flex; align-items:center; justify-content:center; transition: transform 4s ease; overflow:hidden;">
+    <img id="breathRabbit" src="Rabbit1.png" style="width:100%; height:100%; object-fit:cover; border-radius:50%; transition: opacity 0.4s ease;">
+</div>
+        <div id="breathText" style="font-size:20px; color:#3d523d; font-weight:700; margin-bottom:8px;"></div>
+        <div id="breathSub" style="font-size:14px; color:#7a9a72; margin-bottom:25px;"></div>
+        <button onclick="closeBreath()" style="border:none; background:rgba(142,181,138,0.2); color:#56784f; padding:12px 30px; border-radius:20px; font-size:15px; cursor:pointer;">بستن</button>
+    </div>
+</div>
+
+<!-- Mood Screen -->
+<div id="moodScreen" class="screen">
+    <div class="garden-header">
+        <div class="garden-icon">🌤️</div>
+        <h2 style="font-size:24px; color:#3d5d38; font-weight:800;">وضعیت امروزت✨</h2>
+    </div>
+    <div style="background:rgba(255,255,255,0.65); backdrop-filter:blur(16px); padding:25px; border-radius:32px; border:1px solid rgba(255,255,255,0.7); box-shadow:0 12px 35px rgba(0,0,0,0.05); margin-bottom:18px; text-align:center;">
+        <p style="font-size:16px; color:#546554; margin-bottom:20px; line-height:2;">امروز چطورییی؟</p>
+        <div id="moodBtns" style="display:flex; justify-content:center; gap:12px; margin-bottom:15px;">
+            <button onclick="saveMood(1)">😞</button>
+            <button onclick="saveMood(2)">😕</button>
+            <button onclick="saveMood(3)">😐</button>
+            <button onclick="saveMood(4)">🙂</button>
+            <button onclick="saveMood(5)">😊</button>
+        </div>
+        <div id="moodSavedMsg" style="display:none;" class="mood-saved"></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.65); backdrop-filter:blur(16px); padding:25px; border-radius:32px; border:1px solid rgba(255,255,255,0.7); box-shadow:0 12px 35px rgba(0,0,0,0.05);">
+        <p style="font-size:15px; color:#546554; margin-bottom:15px; font-weight:700;">۳۰ روز اخیر</p>
+        <canvas id="moodChart" width="300" height="150"></canvas>
+   </div>
+	<div style="background:rgba(255,255,255,0.65); backdrop-filter:blur(16px); padding:25px; border-radius:32px; border:1px solid rgba(255,255,255,0.7); box-shadow:0 12px 35px rgba(0,0,0,0.05); margin-bottom:18px; text-align:center;">
+    <p style="font-size:16px; color:#546554; margin-bottom:15px; line-height:2;">یه لحظه وقت داری؟ 🐥</p>
+    <button id="breathBtn" onclick="startBreath()">یه نفس عمیق بکشیم؟🎀</button>
+</div>
+</div>
+</body>
+</html>

@@ -429,19 +429,29 @@ function feedRabbit() {
         eatSound.play();
     }
 }
-/* ---------- Drag & Drop Feeding ---------- */
+/* ---------- Drag & Drop + Touch Feeding ---------- */
 
 if (dragCarrot) {
     dragCarrot.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text", "carrot");
     });
+
+    dragCarrot.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+    }, { passive: false });
+
+    dragCarrot.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (target && (target.id === "rabbit" || target.closest("#gardenArea"))) {
+            feedRabbit();
+        }
+    }, { passive: false });
 }
 
 if (rabbit) {
-    rabbit.addEventListener("dragover", (e) => {
-        e.preventDefault();
-    });
-
+    rabbit.addEventListener("dragover", (e) => e.preventDefault());
     rabbit.addEventListener("drop", (e) => {
         e.preventDefault();
         feedRabbit();
@@ -654,7 +664,5 @@ function drawMoodChart() {
 function loadMoodScreen() {
     drawMoodChart();
     showScreen(document.getElementById("moodScreen"));
-	localStorage.removeItem("garden")
-localStorage.removeItem("notes")
-localStorage.removeItem("carrots")
+	
 }

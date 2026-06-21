@@ -285,13 +285,13 @@ function setRabbitNormal() {
 
 function setRabbitWave() {
     if (rabbit) {
-        rabbit.src = "rabbitwave.png";
+        rabbit.src = "RabbitWave.png";
     }
 }
 
 function setRabbitBlush() {
     if (rabbit) {
-        rabbit.src = "rabbitblush.png";
+        rabbit.src = "RabbitBlush.png";
     }
 }
 
